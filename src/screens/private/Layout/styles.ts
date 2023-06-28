@@ -1,0 +1,21 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+`;
+
+export const ContainerMain = styled.div`
+	width: 100%;
+	display: flex;
+`;
+
+export const Main = styled.div`
+	width: 100%;
+	padding: 40px;
+	overflow-y: auto;
+	position: relative;
+	background-color: #f9f9f9;
+	min-height: calc(100vh - 100px);
+`;
