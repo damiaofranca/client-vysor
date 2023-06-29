@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# Projeto de Desafio de Vaga (Front-end)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto é um desafio de vaga para a posição de desenvolvedor front-end. Foi desenvolvido utilizando o framework ReactJS, o Firebase como backend para a maioria dos dados, o Styled Components para estilização e o Google Maps para exibição de um mapa.
 
-## Available Scripts
+## Funcionalidades
 
-In the project directory, you can run:
+O projeto possui as seguintes funcionalidades:
 
-### `npm start`
+- Autenticação de usuários: É possível fazer login utilizando o email e senha cadastrados no ambiente de teste.
+- Exibição de dados do cliente: Na página do dashboard, são exibidos os dados do cliente logado.
+- Integração com o Google Maps: A aplicação utiliza a API do Google Maps para exibir um mapa interativo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Pré-requisitos
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Antes de executar o projeto em ambiente local, certifique-se de ter as seguintes dependências configuradas:
 
-### `npm test`
+- Um projeto Firebase com Firestore e Firebase Authentication configurados. Consulte a documentação oficial do Firebase para obter mais informações.
+- Uma chave de API do Google Maps. É necessário configurar essa chave no arquivo .env para o mapa funcionar corretamente.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Configuração do ambiente
 
-### `npm run build`
+Siga as instruções abaixo para configurar e executar o projeto em ambiente local:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone o repositório do projeto no GitHub: `git clone <URL_DO_REPOSITÓRIO>`
+2. Navegue até o diretório do projeto: `cd <NOME_DO_DIRETÓRIO>`
+3. Instale as dependências do projeto utilizando o comando: `yarn install`
+4. Crie um arquivo `.env` baseado no arquivo `.env.example` e preencha as variáveis de ambiente necessárias, como a chave de API do Google Maps e as configurações do Firebase.
+5. Execute o comando `yarn start` para iniciar a aplicação localmente.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Teste na Vercel
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A aplicação também está disponível na plataforma Vercel para análise. Para acessar, utilize as seguintes credenciais de usuário:
 
-### `npm run eject`
+- Email: agilinojose@gmail.com
+- Senha: qazxsw123
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contribuição
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Se você quiser contribuir para este projeto, sinta-se à vontade para abrir issues e enviar pull requests no repositório do GitHub. Faremos o possível para revisar e incorporar suas contribuições.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Licença
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Todos os direitos reservados. Este projeto não permite o uso, cópia ou distribuição do código-fonte para terceiros. É estritamente para fins de análise e avaliação para o desafio de vaga.
