@@ -1,15 +1,16 @@
+import { useGetStores } from "../../../hooks";
 import CardDashboard from "../../../components/CardDashboard";
-import { Container, WrapperCards, WrapperGraphics } from "./styles";
 
 //icons
+import Graphic from "../../../components/Graphic";
+import { RankingCities } from "../../../components";
 import ChipIcon from "../../../assets/icons/chip.svg";
 import BuildIcon from "../../../assets/icons/build.svg";
 import PeopleIcon from "../../../assets/icons/people.svg";
 import MapDashboardIcon from "../../../assets/icons/map-dashboard.svg";
-import { RankingCities } from "../../../components";
-import { useGetStores } from "../../../hooks";
-import Graphic from "../../../components/Graphic";
 //icons
+
+import { Container, WrapperCards, WrapperGraphics } from "./styles";
 
 interface InitialPageProps {}
 

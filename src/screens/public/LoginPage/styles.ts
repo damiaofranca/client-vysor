@@ -13,7 +13,7 @@ export const LoginContainer = styled.div`
 	flex-direction: column;
 	align-items: flex-start;
 
-	@media screen and (max-width: 920px) {
+	@media screen and (max-width: 1200px) {
 		max-width: 100%;
 		align-items: center;
 	}
@@ -23,11 +23,12 @@ export const LoginContainer = styled.div`
 	}
 `;
 
-export const BackgroundContainer = styled.div`
+export const BackgroundContainer = styled.div<{ image: string }>`
 	width: 100%;
-	background-color: red;
+	height: 100vh;
+	background-image: url(${({ image }) => image});
 
-	@media screen and (max-width: 920px) {
+	@media screen and (max-width: 1200px) {
 		display: none;
 	}
 `;
@@ -46,6 +47,10 @@ export const ContainerForm = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+
+	@media screen and (max-width: 1200px) {
+		max-width: 500px;
+	}
 
 	@media screen and (max-width: 920px) {
 		max-width: 60%;

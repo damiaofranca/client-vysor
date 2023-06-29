@@ -1,8 +1,8 @@
 import React from "react";
-import { WatchDimentions } from "../WatchDimentions";
-import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import optionsChart from "../../utils/optionsChart";
+import { WatchDimentions } from "../WatchDimentions";
+import HighchartsReact from "highcharts-react-official";
 
 interface IChartClients {
 	viewDate?: "Day" | "Month";

@@ -1,16 +1,16 @@
-import { User, signOut } from "firebase/auth";
 import React, { ReactNode } from "react";
+import { User, signOut } from "firebase/auth";
 
 import {
 	getAuth,
-	inMemoryPersistence,
 	setPersistence,
+	inMemoryPersistence,
 	signInWithEmailAndPassword,
 } from "firebase/auth";
 
+import { IUserAuthContext, IUserAuthSignIn } from "./types";
 import { useAuthentication } from "../../hooks/useAuthentication";
 import { handleFirebaseRequestError } from "../../utils/requestError";
-import { IUserAuthContext, IUserAuthSignIn } from "./types";
 
 interface UserAuthProps {
 	children: ReactNode;

@@ -4,11 +4,11 @@ import plusIcon from "../../../assets/icons/plus.svg";
 import { CreateStore, MapPartners } from "../../../components";
 
 import {
+	Title,
 	Container,
-	ContainerHeader,
 	RegisterIcon,
 	RegisterStore,
-	Title,
+	ContainerHeader,
 } from "./styles";
 
 interface PartnersStoresProps {}

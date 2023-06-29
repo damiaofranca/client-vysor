@@ -1,13 +1,15 @@
 import React from "react";
+
+import MapIcon from "../../assets/icons/map.svg";
+import HomeIcon from "../../assets/icons/home.svg";
+
 import {
+	LinkIcon,
 	MenuTitle,
 	LinkAction,
 	LinkContainer,
 	ContainerExpanded,
-	LinkIcon,
 } from "./styles";
-import MapIcon from "../../assets/icons/map.svg";
-import HomeIcon from "../../assets/icons/home.svg";
 
 interface IMenuLateral {
 	expanded?: boolean;

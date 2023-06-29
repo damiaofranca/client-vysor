@@ -1,14 +1,14 @@
 import React from "react";
 
 import {
-	Container,
-	ContainerInfoColumn,
-	ContainerInfoFlex,
 	Icon,
-	ImageMetric,
-	SubTitle,
 	Title,
 	Value,
+	SubTitle,
+	Container,
+	ImageMetric,
+	ContainerInfoFlex,
+	ContainerInfoColumn,
 } from "./styles";
 
 //icons

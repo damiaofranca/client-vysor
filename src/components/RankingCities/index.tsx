@@ -1,12 +1,13 @@
 import { useGetStores } from "../../hooks";
+
 import {
+	Title,
+	ListItem,
+	TitleList,
+	LabelList,
 	Container,
 	ContainerList,
-	LabelList,
-	ListItem,
 	NoRegisteredStores,
-	Title,
-	TitleList,
 } from "./styles";
 
 interface RankingCitiesProps {}

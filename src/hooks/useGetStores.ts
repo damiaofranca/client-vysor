@@ -1,5 +1,5 @@
-import { collection, onSnapshot, query } from "firebase/firestore";
 import React from "react";
+import { collection, onSnapshot, query } from "firebase/firestore";
 import { dbFireStore } from "../config/firebase";
 
 export interface Store {

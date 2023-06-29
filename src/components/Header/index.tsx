@@ -1,4 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useUserAuth } from "../../hooks/useUserAuth";
+import { getFirstNameFromEmail } from "../../utils/getFirstName";
+
+//icons
 import LogoIcon from "../../assets/icons/logo.svg";
 import SignOutIcon from "../../assets/icons/sign-out.svg";
 import MinifyIcon from "../../assets/icons/minify-bar.svg";
@@ -6,26 +11,24 @@ import NotificationIcon from "../../assets/icons/bell.svg";
 import ExpandedIcon from "../../assets/icons/expanded-bar.svg";
 import TriangleUpIcon from "../../assets/icons/triangle-up.svg";
 import TriangleDownIcon from "../../assets/icons/triangle-down.svg";
+//icons
 
 import {
 	Logo,
+	Divider,
+	NameUser,
 	LeftSide,
 	Container,
 	Notification,
-	SwitchViewSideBar,
-	Divider,
-	InitialLetters,
-	NameUser,
-	ContainerUserInfo,
 	MenuInfoIcon,
-	ContainerDropDown,
-	IconDropDownAction,
-	ActionDropDown,
 	TextDropDown,
+	ActionDropDown,
+	InitialLetters,
+	SwitchViewSideBar,
+	ContainerDropDown,
+	ContainerUserInfo,
+	IconDropDownAction,
 } from "./styles";
-import { useUserAuth } from "../../hooks/useUserAuth";
-import { useNavigate } from "react-router-dom";
-import { getFirstNameFromEmail } from "../../utils/getFirstName";
 
 interface HeaderProps {
 	sideExpanded: boolean;
@@ -39,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({ sideExpanded, onExpanded }) => {
 
 	const signOut = async () => {
 		await onSignOut();
-		navigate("/");
+		navigate("/login");
 	};
 	return (
 		<Container>

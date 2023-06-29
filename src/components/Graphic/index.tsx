@@ -1,12 +1,13 @@
 import React from "react";
-import { Container, ContainerChart, Header, Icon, Title } from "./styles";
+import clientsData from "./data";
+import ChartClients from "../ChartClients";
 
 //icons
 import TriangleLeftIcon from "../../assets/icons/triangle-left.svg";
 import TriangleRightIcon from "../../assets/icons/triangle-right.svg";
-import ChartClients from "../ChartClients";
-import clientsData from "./data";
 //icons
+
+import { Container, ContainerChart, Header, Icon, Title } from "./styles";
 
 const Graphic: React.FC = () => (
 	<Container>

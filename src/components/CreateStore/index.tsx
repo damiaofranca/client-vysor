@@ -1,29 +1,29 @@
 import React from "react";
+import { useFormik } from "formik";
+import { toast } from "react-toastify";
+import { doc, setDoc } from "firebase/firestore";
 
 import { Input } from "../Input";
-import { useFormik } from "formik";
+import { Spinner } from "../Spinner";
 import RegisterStoreSchema from "./schema";
+import { dbFireStore } from "../../config/firebase";
 import ArrowLeftIcon from "../../assets/icons/arrow-left.svg";
+import { maskToCurrencyValue } from "../../utils/maskToCurrencyValue";
+import { handleFirebaseRequestError } from "../../utils/requestError";
 
 import {
-	Backdrop,
-	ClearData,
-	Container,
-	ErrorText,
 	Form,
-	FormItem,
-	FormLabel,
 	GoBack,
 	Header,
 	Submit,
+	FormItem,
+	Backdrop,
+	ClearData,
+	Container,
+	FormLabel,
+	ErrorText,
 	TitleModal,
 } from "./styles";
-import { maskToCurrencyValue } from "../../utils/maskToCurrencyValue";
-import { handleFirebaseRequestError } from "../../utils/requestError";
-import { toast } from "react-toastify";
-import { doc, setDoc } from "firebase/firestore";
-import { dbFireStore } from "../../config/firebase";
-import { Spinner } from "../Spinner";
 
 interface ICreateStore {
 	onClose: () => void;

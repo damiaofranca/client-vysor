@@ -1,30 +1,32 @@
-import { useFormik } from "formik";
 import React from "react";
-
-import logo from "../../../assets/icons/logo.svg";
-import { Input } from "../../../components";
-import LoginUserSchema from "./schema";
-
+import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+
+import LoginUserSchema from "./schema";
+import { Input, Spinner } from "../../../components";
+import logo from "../../../assets/icons/logo.svg";
 import { useUserAuth } from "../../../hooks/useUserAuth";
+import BackgroundImage from "../../../assets/images/background-login.png";
+
 import {
-	BackgroundContainer,
+	Form,
+	Logo,
+	Title,
+	Submit,
+	SubTitle,
+	FormItem,
+	ErrorText,
+	FormLabel,
 	Container,
 	ContainerForm,
-	ErrorText,
-	Form,
-	FormItem,
-	FormLabel,
 	LoginContainer,
-	Logo,
-	SubTitle,
-	Submit,
-	Title,
+	BackgroundContainer,
 } from "./styles";
 
 const LoginPage: React.FC = () => {
 	const navigate = useNavigate();
 	const { onLogin } = useUserAuth();
+	const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
 	const {
 		errors,
@@ -48,7 +50,10 @@ const LoginPage: React.FC = () => {
 	});
 
 	const _onLogin = async () => {
+		setIsLoading(true);
 		await onLogin({ email: values.email, password: values.password });
+		setIsLoading(false);
+
 		navigate("/");
 	};
 
@@ -94,12 +99,13 @@ const LoginPage: React.FC = () => {
 							)}
 						</FormItem>
 						<Submit disabled={!isValid} type="submit">
+							{isLoading && <Spinner />}
 							Acessar
 						</Submit>
 					</Form>
 				</ContainerForm>
 			</LoginContainer>
-			<BackgroundContainer></BackgroundContainer>
+			<BackgroundContainer image={BackgroundImage}></BackgroundContainer>
 		</Container>
 	);
 };

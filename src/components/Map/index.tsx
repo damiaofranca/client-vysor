@@ -1,5 +1,5 @@
-import { Status, Wrapper } from "@googlemaps/react-wrapper";
 import React from "react";
+import { Status, Wrapper } from "@googlemaps/react-wrapper";
 import { useGetStores } from "../../hooks";
 
 import MarkerIcon from "../../assets/icons/marker.svg";
