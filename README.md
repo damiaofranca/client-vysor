@@ -6,9 +6,11 @@ Este projeto é um desafio de vaga para a posição de desenvolvedor front-end. 
 
 O projeto possui as seguintes funcionalidades:
 
-- Autenticação de usuários: É possível fazer login utilizando o email e senha cadastrados no ambiente de teste.
-- Exibição de dados do cliente: Na página do dashboard, são exibidos os dados do cliente logado.
-- Integração com o Google Maps: A aplicação utiliza a API do Google Maps para exibir um mapa interativo.
+- Autenticação de usuários: É possível fazer login utilizando o email e senha cadastrados no ambiente de teste (e logout).
+- Exibição de dados do cliente: São exibidos os dados do cliente logado.
+- Dashboard de clientes e cidades: Na página do dashboard, são exibidos os dados do clientes (estático) e informações dos das cidades(vindas do firabase-realtime)
+- Integração com o Google Maps: A aplicação utiliza a API do Google Maps para exibir um mapa interativo com marcadores das lojas cadastradas.
+- Adição: É possivel fazer o cadastrado de lojas de forma real-time.
 
 ## Pré-requisitos
 
