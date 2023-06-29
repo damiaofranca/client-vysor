@@ -12,3 +12,40 @@
   transition        : none;
   -o-transition     : all 0s ease;
 }
+
+.custom-info-window {
+  max-width : none;
+  width     : 260px;
+  min-height: 140px;
+}
+
+.custom-info-window>.title {
+  font-weight   : 600;
+  font-size     : 18px;
+  line-height   : 27px;
+  font-style    : normal;
+  font-family   : "Inter";
+  color         : #4F4F4F;
+  text-transform: capitalize;
+  margin-bottom : 16px;
+}
+
+
+.custom-info-window .wrapper-info .subtitle {
+  font-weight: 500;
+  font-size  : 16px;
+  line-height: 24px;
+  font-style : normal;
+  font-family: "Inter";
+  color      : #4F4F4F;
+}
+
+
+.custom-info-window .wrapper-info label {
+  font-weight: 400;
+  font-size  : 14px;
+  line-height: 21px;
+  font-style : normal;
+  font-family: "Inter";
+  color      : #828282;
+}

@@ -1,14 +1,47 @@
 import { Status, Wrapper } from "@googlemaps/react-wrapper";
 import React from "react";
+import { useGetStores } from "../../hooks";
+
+import MarkerIcon from "../../assets/icons/marker.svg";
+import { contentInfoWindow } from "../../utils/contentInfoWindow";
 
 const Map: React.FC = () => {
+	const { stores } = useGetStores();
+	const [map, setMap] = React.useState<google.maps.Map | null>(null);
+
 	React.useEffect(() => {
-		new window.google.maps.Map(document.getElementById("map")!, {
+		if (map && stores.length) {
+			stores.map((store) => {
+				const infoWindow = new google.maps.InfoWindow({
+					ariaLabel: "Inter",
+					content: contentInfoWindow(store),
+				});
+
+				const marker = new window.google.maps.Marker({
+					map,
+					icon: MarkerIcon,
+					position: { lat: store.lat, lng: store.lng },
+				});
+
+				marker.addListener("click", () => {
+					infoWindow.open({
+						map,
+						anchor: marker,
+					});
+				});
+			});
+		}
+	}, [stores]);
+
+	React.useEffect(() => {
+		const _map = new window.google.maps.Map(document.getElementById("map")!, {
 			zoom: 12,
 			mapTypeId: "terrain",
 			streetViewControl: false,
 			center: { lat: -6.2091486, lng: -38.4988093 },
 		});
+
+		setMap(_map);
 	}, []);
 
 	return (
