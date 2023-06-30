@@ -26,6 +26,9 @@ export const LoginContainer = styled.div`
 export const BackgroundContainer = styled.div<{ image: string }>`
 	width: 100%;
 	height: 100vh;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 	background-image: url(${({ image }) => image});
 
 	@media screen and (max-width: 1200px) {
