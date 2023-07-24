@@ -39,7 +39,7 @@ export const BackgroundContainer = styled.div<{ image: string }>`
 export const Logo = styled.img`
 	width: auto;
 	height: 32px;
-	margin-bottom: 224px;
+	margin-bottom: 90px;
 
 	@media screen and (max-width: 920px) {
 		margin-bottom: 120px;
