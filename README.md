@@ -1,6 +1,6 @@
-# Projeto de Desafio de Vaga (Front-end)
+# Cliente Vysor
 
-Este projeto é um desafio de vaga para a posição de desenvolvedor front-end. Foi desenvolvido utilizando o framework ReactJS, o Firebase como backend para a maioria dos dados, o Styled Components para estilização e o Google Maps para exibição de um mapa.
+Projeto desenvolvido para gerênciamento de clientes + produtos.
 
 ## Funcionalidades
 
@@ -29,17 +29,10 @@ Siga as instruções abaixo para configurar e executar o projeto em ambiente loc
 4. Crie um arquivo `.env` baseado no arquivo `.env.example` e preencha as variáveis de ambiente necessárias, como a chave de API do Google Maps e as configurações do Firebase.
 5. Execute o comando `yarn start` para iniciar a aplicação localmente.
 
-## Teste na Vercel
-
-A aplicação também está disponível na plataforma Vercel para análise. Para acessar, utilize as seguintes credenciais de usuário:
-
-- Email: agilinojose@gmail.com
-- Senha: qazxsw123
-
 ## Contribuição
 
 Se você quiser contribuir para este projeto, sinta-se à vontade para abrir issues e enviar pull requests no repositório do GitHub. Faremos o possível para revisar e incorporar suas contribuições.
 
 ## Licença
 
-Todos os direitos reservados. Este projeto não permite o uso, cópia ou distribuição do código-fonte para terceiros. É estritamente para fins de análise e avaliação para o desafio de vaga.
+Todos os direitos reservados. Este projeto não permite o uso, cópia ou distribuição do código-fonte para terceiros.
