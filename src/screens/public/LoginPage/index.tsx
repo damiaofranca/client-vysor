@@ -6,7 +6,7 @@ import LoginUserSchema from "./schema";
 import { Input, Spinner } from "../../../components";
 import logo from "../../../assets/icons/logo.svg";
 import { useUserAuth } from "../../../hooks/useUserAuth";
-import BackgroundImage from "../../../assets/images/background-login.png";
+import BackgroundImage from "../../../assets/images/background-login.jpg";
 
 import {
 	Form,

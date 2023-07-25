@@ -12,6 +12,7 @@ export const LoginContainer = styled.div`
 	max-width: 564px;
 	flex-direction: column;
 	align-items: flex-start;
+	background-color: #212957;
 
 	@media screen and (max-width: 1200px) {
 		max-width: 100%;
@@ -69,7 +70,7 @@ export const ContainerForm = styled.div`
 `;
 
 export const Title = styled.h1`
-	color: #333;
+	color: #ffffff;
 	font-size: 32px;
 	font-weight: 600;
 	line-height: 42px;
@@ -77,7 +78,7 @@ export const Title = styled.h1`
 `;
 
 export const SubTitle = styled.h1`
-	color: #828282;
+	color: #ffffff;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 24px;
@@ -100,7 +101,7 @@ export const FormItem = styled.div`
 `;
 
 export const FormLabel = styled.label`
-	color: #333;
+	color: #ffffff;
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 24px;
@@ -136,7 +137,7 @@ export const Submit = styled.button`
 `;
 
 export const ErrorText = styled.span`
-	color: #e54b4b;
+	color: #fff;
 	font-size: 12px;
 	margin-top: 2px;
 	font-weight: 500;
