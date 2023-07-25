@@ -85,7 +85,7 @@ export const Submit = styled.button`
 	margin-bottom: 8px;
 	border-radius: 5px;
 	align-items: center;
-	background: #2382a0;
+	background: #4e61c9;
 	justify-content: center;
 
 	color: #fff;
@@ -94,13 +94,12 @@ export const Submit = styled.button`
 	line-height: 24px;
 
 	&:hover {
-		background-color: #0c799b;
+		background-color: #7081e3;
 	}
 
 	&:disabled {
-		opacity: 0.7;
+		background-color: #9ea9e7;
 		cursor: default;
-		background-color: #4f9bb3;
 	}
 
 	&:focus {

@@ -16,7 +16,7 @@ export const ContainerExpanded = styled.aside<{ expanded: boolean }>`
 `;
 
 export const MenuTitle = styled.h5`
-	color: #4f4f4f;
+	color: #4e61c9;
 	font-size: 12px;
 	cursor: default;
 	font-weight: 600;
@@ -44,7 +44,7 @@ export const LinkAction = styled(NavLink)`
 	align-items: center;
 	background-color: transparent;
 
-	color: #4f4f4f;
+	color: #4e61c9;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 21px;
@@ -57,7 +57,7 @@ export const LinkAction = styled(NavLink)`
 
 	&.active {
 		font-weight: 600;
-		box-shadow: inset -3px 0px #2382a0;
+		box-shadow: inset -3px 0px #4e61c9;
 	}
 
 	@media screen and (max-width: 920px) {

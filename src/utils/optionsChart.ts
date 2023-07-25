@@ -19,13 +19,15 @@ const optionsChart = {
 	responsive: {},
 	chart: {
 		borderWidth: 1,
-		borderColor: "#f0f0f0",
+		borderColor: "transparent",
 	},
 	accessibility: {
 		enabled: false,
 	},
+
 	plotOptions: {
 		series: {
+			color: "#4E61C9",
 			label: {
 				connectorAllowed: false,
 			},

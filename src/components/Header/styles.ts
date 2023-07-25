@@ -4,12 +4,13 @@ export const Container = styled.header`
 	width: 100%;
 	display: flex;
 	align-items: center;
+	background-color: #4e61c9;
 	padding: 25px 40px 25px 29px;
 `;
 
 export const Logo = styled.img`
-	width: auto;
-	height: 32px;
+	width: 180px;
+	height: auto;
 	margin-right: 45px;
 
 	@media screen and (max-width: 770px) {
@@ -42,32 +43,6 @@ export const LeftSide = styled.div`
 	justify-content: flex-end;
 `;
 
-export const Notification = styled.button<{ imgURL: string }>`
-	width: 24px;
-	height: 24px;
-	border: none;
-	position: relative;
-	background: url(${({ imgURL }) => imgURL});
-
-	&::before {
-		top: 1px;
-		right: 1px;
-		width: 4px;
-		height: 4px;
-		content: "";
-		position: absolute;
-		border-radius: 10px;
-		background-color: #e54b4b;
-	}
-`;
-
-export const Divider = styled.div`
-	width: 1px;
-	height: 32px;
-	margin: 0 16px;
-	background-color: #bdbdbd;
-`;
-
 export const InitialLetters = styled.div`
 	width: 50px;
 	height: 50px;
@@ -76,16 +51,17 @@ export const InitialLetters = styled.div`
 	align-items: center;
 	border-radius: 50px;
 	justify-content: center;
-	background-color: #2382a0;
+	background-color: #ffffff;
 
-	color: #fff;
+	color: #4f4f4f;
 	font-size: 24px;
 	line-height: 34px;
+	font-weight: 600;
 	text-transform: uppercase;
 `;
 
 export const NameUser = styled.h5`
-	color: #4f4f4f;
+	color: #ffffff;
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 24px;
@@ -99,35 +75,29 @@ export const ContainerUserInfo = styled.div`
 	align-items: center;
 `;
 
-export const MenuInfoIcon = styled.img`
-	width: 24px;
-	height: 24px;
-`;
-
 export const ContainerDropDown = styled.div`
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	z-index: 9999;
 	cursor: default;
-	padding: 8px 10px;
 	border-radius: 4px;
 	position: absolute;
-	background-color: #2382a0;
+	background-color: #5d3ac5;
 	transform: translateY(calc(100% + 6px));
 `;
 
 export const ActionDropDown = styled.div`
 	width: 100%;
-	padding: 2px;
 	display: flex;
 	cursor: pointer;
+	padding: 8px 10px;
 	border-radius: 2px;
 	align-items: center;
-	background-color: #2382a0;
+	background-color: #5d3ac5;
 
 	&:hover {
-		background-color: #2b90af;
+		background-color: #4e28c3;
 	}
 `;
 

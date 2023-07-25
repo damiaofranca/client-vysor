@@ -7,20 +7,13 @@ import { getFirstNameFromEmail } from "../../utils/getFirstName";
 import LogoIcon from "../../assets/icons/logo.svg";
 import SignOutIcon from "../../assets/icons/sign-out.svg";
 import MinifyIcon from "../../assets/icons/minify-bar.svg";
-import NotificationIcon from "../../assets/icons/bell.svg";
 import ExpandedIcon from "../../assets/icons/expanded-bar.svg";
-import TriangleUpIcon from "../../assets/icons/triangle-up.svg";
-import TriangleDownIcon from "../../assets/icons/triangle-down.svg";
-//icons
 
 import {
 	Logo,
-	Divider,
 	NameUser,
 	LeftSide,
 	Container,
-	Notification,
-	MenuInfoIcon,
 	TextDropDown,
 	ActionDropDown,
 	InitialLetters,
@@ -46,21 +39,15 @@ export const Header: React.FC<HeaderProps> = ({ sideExpanded, onExpanded }) => {
 	};
 	return (
 		<Container>
-			<Logo src={LogoIcon} alt="Client System" />
+			<Logo src={LogoIcon} alt="Client Vysor" />
 			<SwitchViewSideBar
 				imgURL={sideExpanded ? ExpandedIcon : MinifyIcon}
 				onClick={onExpanded}
 			/>
 			<LeftSide>
-				<Notification imgURL={NotificationIcon} />
-				<Divider />
 				<ContainerUserInfo onClick={() => setHandlerMenuInfo(!handlerMenuInfo)}>
-					<InitialLetters>{(userLogged?.email || "")[0]}</InitialLetters>
 					<NameUser>{getFirstNameFromEmail(userLogged?.email || "")}</NameUser>
-					<MenuInfoIcon
-						src={handlerMenuInfo ? TriangleUpIcon : TriangleDownIcon}
-						alt="Informações do usuário"
-					/>
+					<InitialLetters>{(userLogged?.email || "")[0]}</InitialLetters>
 					{handlerMenuInfo && (
 						<ContainerDropDown onClick={(evt: any) => evt.stopPropagation()}>
 							<ActionDropDown onClick={signOut}>

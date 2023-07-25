@@ -32,15 +32,15 @@ export const RegisterStore = styled.button`
 	padding: 5px 8px;
 	border-radius: 4px;
 	align-items: center;
-	background-color: transparent;
+	background-color: #4e61c9;
 
-	color: #4f4f4f;
+	color: #ffffff;
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 24px;
 
 	&:hover {
-		background-color: #f0f0f0;
+		background-color: #4c63df;
 	}
 `;
 

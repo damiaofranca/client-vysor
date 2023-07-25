@@ -185,7 +185,7 @@ export const CreateStore: React.FC<ICreateStore> = ({ onClose }) => {
 					</FormItem>
 					<Submit disabled={!isValid} type="submit">
 						{isLoading && <Spinner />}
-						Cadatrar
+						Cadastrar
 					</Submit>
 					<ClearData onClick={clearData}>Limpar campos</ClearData>
 				</Form>

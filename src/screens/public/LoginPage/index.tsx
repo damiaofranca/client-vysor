@@ -64,7 +64,7 @@ const LoginPage: React.FC = () => {
 	return (
 		<Container>
 			<LoginContainer>
-				<Logo src={logo} alt="Client System" />
+				<Logo src={logo} alt="Client Vysor" />
 				<ContainerForm>
 					<Title>Login</Title>
 					<SubTitle>
