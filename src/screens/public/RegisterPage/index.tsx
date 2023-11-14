@@ -1,34 +1,30 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
 import { Button, Spinner } from "@nextui-org/react";
 
 import LoginUserSchema from "./schema";
+import { InputNew } from "../../../components";
 import logo from "../../../assets/icons/logo.svg";
 import { useUserAuth } from "../../../hooks/useUserAuth";
-import { GoogleIcon, InputNew } from "../../../components";
 
 import {
 	Logo,
 	Form,
 	FormItem,
-	Subtitle,
 	LeftSide,
+	Subtitle,
 	RightSide,
 	TitleLeft,
 	TitleForm,
 	Container,
 	ContainerForm,
-	ForgotPassword,
-	ContainerSubmit,
 	DontHaveAccount,
-	ForgotPasswordContainer,
+	ContainerSubmit,
 	DontHaveAccountContainer,
 } from "./styles";
 
-const LoginPage: React.FC = () => {
-	const navigate = useNavigate();
-	const { onLogin, onSignInWithGoogle } = useUserAuth();
+const RegisterPage: React.FC = () => {
+	const { onSignUp } = useUserAuth();
 	const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
 	const {
@@ -45,19 +41,18 @@ const LoginPage: React.FC = () => {
 		initialValues: {
 			email: "",
 			password: "",
+			passwordConfirmation: "",
 		},
-		onSubmit: () => {
-			_onLogin();
+		onSubmit: (values) => {
+			onRegister({ email: values.email, password: values.password });
 		},
 		validationSchema: LoginUserSchema,
 	});
 
-	const _onLogin = async () => {
+	const onRegister = async (values: { email: string; password: string }) => {
 		setIsLoading(true);
-		await onLogin({ email: values.email, password: values.password });
+		await onSignUp(values);
 		setIsLoading(false);
-
-		navigate("/");
 	};
 
 	React.useEffect(() => {
@@ -69,18 +64,18 @@ const LoginPage: React.FC = () => {
 			<LeftSide>
 				<Logo src={logo} alt="Client Vysor" />
 				<TitleLeft>
-					“Automatização para seu <strong>estoque</strong> empresárial!”
+					“Eficiência para o seu controle de <strong>estoque</strong>{" "}
+					empresarial!”
 				</TitleLeft>
 				<Subtitle>
-					Busque o que sempre desejou, um sistema que te oferece controle total
-					sobre seu estoque.
+					Um sistema que proporciona controle total sobre o seu estoque.
 				</Subtitle>
 
 				<img src={logo} alt="Client Vysor" className="logo-absolute" />
 			</LeftSide>
 			<RightSide>
 				<ContainerForm>
-					<TitleForm>Login</TitleForm>
+					<TitleForm>Registre-se</TitleForm>
 					<Form onSubmit={handleSubmit}>
 						<FormItem>
 							<InputNew
@@ -111,11 +106,28 @@ const LoginPage: React.FC = () => {
 								}
 							/>
 						</FormItem>
-						<ForgotPasswordContainer>
-							<ForgotPassword to={"/forgot-password"}>
-								Esqueceu a senha ?
-							</ForgotPassword>
-						</ForgotPasswordContainer>
+						<FormItem>
+							<InputNew
+								type="password"
+								variant="bordered"
+								onBlur={handleBlur}
+								onChange={handleChange}
+								label="Senha novamente"
+								name="passwordConfirmation"
+								value={values.passwordConfirmation}
+								placeholder="Digite sua senha novamente"
+								isInvalid={
+									errors.passwordConfirmation && touched.passwordConfirmation
+										? true
+										: false
+								}
+								errorMessage={
+									errors.passwordConfirmation && touched.passwordConfirmation
+										? errors.passwordConfirmation
+										: ""
+								}
+							/>
+						</FormItem>
 
 						<ContainerSubmit>
 							<Button
@@ -126,26 +138,14 @@ const LoginPage: React.FC = () => {
 								isLoading={isLoading}
 								spinner={<Spinner size="sm" />}
 							>
-								Entrar
-							</Button>
-						</ContainerSubmit>
-						<ContainerSubmit>
-							<Button
-								type="submit"
-								color="primary"
-								variant="bordered"
-								className="w-full"
-								endContent={<GoogleIcon />}
-								onClick={onSignInWithGoogle}
-							>
-								Continue com
+								Registrar
 							</Button>
 						</ContainerSubmit>
 					</Form>
 				</ContainerForm>
 				<DontHaveAccountContainer>
-					<DontHaveAccount to={"/register"}>
-						Não têm uma conta? <strong>Registre-se.</strong>
+					<DontHaveAccount to={"/login"}>
+						Já têm uma conta? <strong>Clique aqui.</strong>
 					</DontHaveAccount>
 				</DontHaveAccountContainer>
 			</RightSide>
@@ -153,4 +153,4 @@ const LoginPage: React.FC = () => {
 	);
 };
 
-export default LoginPage;
+export default RegisterPage;

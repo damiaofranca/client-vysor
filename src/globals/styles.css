@@ -1,8 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin     : 0;
   padding    : 0;
   box-sizing : border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   transition : all 0.06s ease-in-out;
 }
 
@@ -24,7 +28,7 @@
   font-size     : 18px;
   line-height   : 27px;
   font-style    : normal;
-  font-family   : "Inter";
+  font-family   : "Open Sans";
   color         : #4F4F4F;
   text-transform: capitalize;
   margin-bottom : 16px;
@@ -36,7 +40,7 @@
   font-size  : 16px;
   line-height: 24px;
   font-style : normal;
-  font-family: "Inter";
+  font-family: "Open Sans";
   color      : #4F4F4F;
 }
 
@@ -46,6 +50,6 @@
   font-size  : 14px;
   line-height: 21px;
   font-style : normal;
-  font-family: "Inter";
+  font-family: "Open Sans";
   color      : #828282;
 }

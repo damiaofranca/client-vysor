@@ -13,7 +13,7 @@ const Map: React.FC = () => {
 		if (map && stores.length) {
 			stores.map((store) => {
 				const infoWindow = new google.maps.InfoWindow({
-					ariaLabel: "Inter",
+					ariaLabel: "Open Sans",
 					content: contentInfoWindow(store),
 				});
 

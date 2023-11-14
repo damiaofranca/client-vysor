@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
 
 import "firebase/storage";
 
@@ -19,4 +20,10 @@ const dbFireStore = getFirestore(app);
 
 const storageBucket = getStorage(app);
 
-export { app, dbFireStore, storageBucket };
+const auth = getAuth(app);
+
+auth.useDeviceLanguage();
+
+const provider = new GoogleAuthProvider();
+
+export { app, dbFireStore, storageBucket, provider, auth };

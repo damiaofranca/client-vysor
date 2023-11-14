@@ -22,7 +22,7 @@ export const MenuTitle = styled.h5`
 	font-weight: 600;
 	padding-left: 25px;
 	line-height: 18.5px;
-	font-family: "Montserrat", "Inter";
+	font-family: "Montserrat", "Open Sans";
 
 	@media screen and (max-width: 920px) {
 		display: none !important;
@@ -48,7 +48,7 @@ export const LinkAction = styled(NavLink)`
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 21px;
-	font-family: "Inter";
+	font-family: "Open Sans";
 	text-decoration: none;
 
 	&:hover {

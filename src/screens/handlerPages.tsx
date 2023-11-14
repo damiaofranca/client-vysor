@@ -6,6 +6,7 @@ import LoginPage from "./public/LoginPage";
 import { ProtectedPage } from "../components";
 import { UserAuth } from "../providers/UserAuth";
 import { ROUTES_PAGES } from "./private/routes-protected";
+import RegisterPage from "./public/RegisterPage";
 
 const HandlerPages: React.FC = () => {
 	const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const HandlerPages: React.FC = () => {
 		{
 			path: "/login",
 			element: <ProtectedPage element={LoginPage} validadePage={false} />,
+		},
+		{
+			path: "/register",
+			element: <ProtectedPage element={RegisterPage} validadePage={false} />,
 		},
 	]);
 

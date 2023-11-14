@@ -1,8 +1,12 @@
 import React, { ReactNode } from "react";
-import { User, signOut } from "firebase/auth";
+import {
+	UserInfo,
+	createUserWithEmailAndPassword,
+	signInWithPopup,
+	signOut,
+} from "firebase/auth";
 
 import {
-	getAuth,
 	setPersistence,
 	inMemoryPersistence,
 	signInWithEmailAndPassword,
@@ -11,21 +15,21 @@ import {
 import { IUserAuthContext, IUserAuthSignIn } from "./types";
 import { useAuthentication } from "../../hooks/useAuthentication";
 import { handleFirebaseRequestError } from "../../utils/requestError";
+import { auth, provider } from "../../config/firebase";
 
 interface UserAuthProps {
 	children: ReactNode;
 }
 
 export const UserAuthContext = React.createContext<IUserAuthContext>(
-	{} as IUserAuthContext
+	{} as IUserAuthContext,
 );
 
 export const UserAuth: React.FC<UserAuthProps> = ({ children }) => {
-	const auth = getAuth();
 	const { user } = useAuthentication();
 	const preUser = localStorage.getItem("user");
-	const [userLogged, setUserLogged] = React.useState<User | undefined>(
-		preUser && JSON.parse(preUser)
+	const [userLogged, setUserLogged] = React.useState<UserInfo | undefined>(
+		preUser && JSON.parse(preUser),
 	);
 
 	const onLogin = async ({ email, password }: IUserAuthSignIn) => {
@@ -34,10 +38,11 @@ export const UserAuth: React.FC<UserAuthProps> = ({ children }) => {
 			const { user: userSignIn } = await signInWithEmailAndPassword(
 				auth,
 				email,
-				password
+				password,
 			);
-			setUserLogged(userSignIn);
-			localStorage.setItem("user", JSON.stringify(userSignIn));
+
+			setUserLogged(userSignIn.providerData[0]);
+			localStorage.setItem("user", JSON.stringify(userSignIn.providerData[0]));
 		} catch (err) {
 			handleFirebaseRequestError(err as any);
 		}
@@ -49,6 +54,38 @@ export const UserAuth: React.FC<UserAuthProps> = ({ children }) => {
 		localStorage.removeItem("user");
 	};
 
+	const onSignInWithGoogle = async () => {
+		try {
+			const user = await signInWithPopup(auth, provider);
+			setUserLogged(user.user.providerData[0]);
+			localStorage.setItem("user", JSON.stringify(user.user.providerData[0]));
+			window.location.href = "/";
+		} catch (error: any) {
+			// const errorCode = error.code;
+			// const errorMessage = error.message;
+			// const email = error.customData.email;
+			// const credential = GoogleAuthProvider.credentialFromError(error);
+		}
+	};
+
+	const onSignUp = async (values: { email: string; password: string }) => {
+		try {
+			const user = await createUserWithEmailAndPassword(
+				auth,
+				values.email,
+				values.password,
+			);
+			setUserLogged(user.user.providerData[0]);
+			localStorage.setItem("user", JSON.stringify(user.user.providerData[0]));
+			window.location.href = "/";
+		} catch (error: any) {
+			// const errorCode = error.code;
+			// const errorMessage = error.message;
+			// const email = error.customData.email;
+			// const credential = GoogleAuthProvider.credentialFromError(error);
+		}
+	};
+
 	React.useEffect(() => {
 		if (user) {
 			setUserLogged(user);
@@ -58,9 +95,12 @@ export const UserAuth: React.FC<UserAuthProps> = ({ children }) => {
 	return (
 		<UserAuthContext.Provider
 			value={{
-				onLogin,
-				onSignOut,
 				userLogged,
+
+				onLogin,
+				onSignUp,
+				onSignOut,
+				onSignInWithGoogle,
 			}}
 		>
 			{children}

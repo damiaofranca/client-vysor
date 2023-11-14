@@ -9,3 +9,7 @@ export * from "./ProtectedPage";
 export * from "./CardDashboard";
 export * from "./RankingCities";
 export * from "./WatchDimentions";
+export * from "./InputNew";
+export * from "./EyeFilledIcon";
+export * from "./EyeSlashFilledIcon";
+export * from "./GoogleIcon";

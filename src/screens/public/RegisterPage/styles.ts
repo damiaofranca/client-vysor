@@ -122,27 +122,10 @@ export const FormItem = styled.div`
 	}
 `;
 
-export const ForgotPasswordContainer = styled.div`
-	width: 100%;
-	display: flex;
-	margin-bottom: 32px;
-	justify-content: flex-end;
-`;
-
-export const ForgotPassword = styled(Link)`
-	color: #c6c6d3;
-	font-size: 13px;
-	font-weight: 500;
-	font-family: "Open Sans";
-`;
-
 export const ContainerSubmit = styled.div`
 	width: 100%;
+	margin-top: 24px;
 	margin-bottom: 35px;
-
-	&:last-child {
-		margin: 0;
-	}
 `;
 
 export const DontHaveAccountContainer = styled.div`
