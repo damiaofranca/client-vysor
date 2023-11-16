@@ -36,7 +36,7 @@ export const LeftSide = styled.div`
 	}
 
 	&.dark {
-		background: linear-gradient(154deg, #292997, #030523);
+		background: linear-gradient(154deg, rgb(28 28 28), rgb(39 39 39));
 
 		& > .logo-absolute {
 			filter: invert();
