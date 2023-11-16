@@ -18,7 +18,7 @@ export const LeftSide = styled.div`
 	position: relative;
 	padding: 42px 38px;
 	border-radius: 24px;
-	background: linear-gradient(137deg, #c9c9ee, #efeffd, #c9deeea3);
+	background: linear-gradient(154deg, #c9c9ee, #efeffd, #c9deeea3);
 
 	display: flex;
 	flex-direction: column;
@@ -33,6 +33,14 @@ export const LeftSide = styled.div`
 		width: auto;
 		height: 200px;
 		filter: opacity(0.2);
+	}
+
+	&.dark {
+		background: linear-gradient(154deg, #292997, #030523);
+
+		& > .logo-absolute {
+			filter: invert();
+		}
 	}
 
 	@media screen and (max-width: 868px) {
@@ -72,7 +80,6 @@ export const Logo = styled.img`
 	}
 `;
 export const TitleLeft = styled.h1`
-	color: #060513;
 	font-size: 38px;
 	font-weight: 700;
 	margin-bottom: 28px;
@@ -84,8 +91,7 @@ export const TitleLeft = styled.h1`
 `;
 
 export const Subtitle = styled.h5`
-	color: #7070ab;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 300;
 
 	font-family: "Open Sans";
@@ -99,7 +105,6 @@ export const ContainerForm = styled.div`
 `;
 
 export const TitleForm = styled.h1`
-	color: #060513;
 	font-size: 34px;
 	font-weight: 700;
 	margin-bottom: 32px;
@@ -153,7 +158,6 @@ export const DontHaveAccountContainer = styled.div`
 `;
 
 export const DontHaveAccount = styled(Link)`
-	color: #060513;
 	font-size: 13px;
 	font-weight: 400;
 	font-family: "Open Sans";

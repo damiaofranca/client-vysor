@@ -25,8 +25,10 @@ import {
 	ForgotPasswordContainer,
 	DontHaveAccountContainer,
 } from "./styles";
+import { useTheme } from "../../../hooks";
 
 const LoginPage: React.FC = () => {
+	const { theme } = useTheme();
 	const navigate = useNavigate();
 	const { onLogin, onSignInWithGoogle } = useUserAuth();
 	const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -65,13 +67,13 @@ const LoginPage: React.FC = () => {
 	}, []);
 
 	return (
-		<Container>
-			<LeftSide>
+		<Container className="bg-background">
+			<LeftSide className={theme === "dark" ? "dark" : ""}>
 				<Logo src={logo} alt="Client Vysor" />
-				<TitleLeft>
+				<TitleLeft className="text-content2">
 					“Automatização para seu <strong>estoque</strong> empresárial!”
 				</TitleLeft>
-				<Subtitle>
+				<Subtitle className="text-content2">
 					Busque o que sempre desejou, um sistema que te oferece controle total
 					sobre seu estoque.
 				</Subtitle>
@@ -80,7 +82,7 @@ const LoginPage: React.FC = () => {
 			</LeftSide>
 			<RightSide>
 				<ContainerForm>
-					<TitleForm>Login</TitleForm>
+					<TitleForm className="text-content2">Login</TitleForm>
 					<Form onSubmit={handleSubmit}>
 						<FormItem>
 							<InputNew
@@ -144,7 +146,7 @@ const LoginPage: React.FC = () => {
 					</Form>
 				</ContainerForm>
 				<DontHaveAccountContainer>
-					<DontHaveAccount to={"/register"}>
+					<DontHaveAccount to={"/register"} className="text-content2">
 						Não têm uma conta? <strong>Registre-se.</strong>
 					</DontHaveAccount>
 				</DontHaveAccountContainer>

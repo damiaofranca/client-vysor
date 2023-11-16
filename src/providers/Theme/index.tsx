@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useState } from "react";
 
 import { IThemeContext } from "./types";
 import { injectInitialTheme } from "../../utils/injectInitialTheme";
