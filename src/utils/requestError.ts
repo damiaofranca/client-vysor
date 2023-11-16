@@ -3,13 +3,12 @@ import { toast } from "react-toastify";
 
 export function handleFirebaseRequestError(error: FirebaseError): void {
 	let errorCode = "";
-
 	switch (error.code) {
-		case "auth/invalid-email":
-			errorCode = "Email inválido";
+		case "auth/wrong-email":
+			errorCode = "Email ou senha inválido";
 			break;
-		case "auth/invalid-password":
-			errorCode = "Senha inválida";
+		case "auth/wrong-password":
+			errorCode = "Email ou senha inválido";
 			break;
 		case "auth/user-disabled":
 			errorCode = "Usuário desabilitado";
@@ -24,12 +23,12 @@ export function handleFirebaseRequestError(error: FirebaseError): void {
 
 	toast.error(errorCode, {
 		theme: "light",
-		position: "top-right",
 		autoClose: 2000,
 		draggable: true,
 		pauseOnHover: true,
 		closeOnClick: true,
 		progress: undefined,
+		position: "top-right",
 		hideProgressBar: false,
 	});
 }

@@ -3,6 +3,7 @@ import Highcharts from "highcharts";
 import optionsChart from "../../utils/optionsChart";
 import { WatchDimentions } from "../WatchDimentions";
 import HighchartsReact from "highcharts-react-official";
+import { useTheme } from "../../hooks";
 
 interface IChartClients {
 	viewDate?: "Day" | "Month";
@@ -13,6 +14,7 @@ interface IChartClients {
 }
 
 const ChartClients: React.FC<IChartClients> = ({ viewDate, series }) => {
+	const { theme } = useTheme();
 	const chartRef = React.useRef<any>(null);
 	const [options, setOptions] = React.useState<any>({});
 
@@ -28,9 +30,22 @@ const ChartClients: React.FC<IChartClients> = ({ viewDate, series }) => {
 			credits: {
 				enabled: false,
 			},
+			chart: {
+				borderWidth: 1,
+				borderColor: "transparent",
+				backgroundColor: "transparent",
+			},
+			yAxis: {
+				...optionsChart.yAxis,
+				title: {
+					text: "Total de clientes",
+					style: {
+						color: "#d9ddf1",
+					},
+				},
+			},
 			series: series,
 			lang: optionsChart.lang,
-			chart: optionsChart.chart,
 			xAxis: optionsChart.xAxis,
 			legend: optionsChart.legend,
 			subtitle: optionsChart.subtitle,
@@ -53,7 +68,7 @@ const ChartClients: React.FC<IChartClients> = ({ viewDate, series }) => {
 				if (chartRef)
 					chartRef?.current?.chart?.setSize(
 						dimentions.width,
-						dimentions.height
+						dimentions.height,
 					);
 
 				return (

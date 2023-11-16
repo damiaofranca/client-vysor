@@ -51,10 +51,6 @@ export const LinkAction = styled(NavLink)`
 	font-family: "Open Sans";
 	text-decoration: none;
 
-	&:hover {
-		background-color: #f4f4f4;
-	}
-
 	&.active {
 		font-weight: 600;
 		box-shadow: inset -3px 0px #4e61c9;

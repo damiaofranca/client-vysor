@@ -1,10 +1,10 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { useUserAuth } from "../../hooks/useUserAuth";
+import { useUserAuth } from "../../hooks";
 
 export type IProtectedPageProps = {
 	redirectTo?: string;
-	validadePage?: boolean;
+	validatePage?: boolean;
 	elementProps?: Record<string, any>;
 	element?: React.ComponentType<any>;
 };
@@ -12,12 +12,12 @@ export type IProtectedPageProps = {
 export const ProtectedPage: React.FC<IProtectedPageProps> = ({
 	elementProps,
 	element: Element,
-	validadePage = true,
+	validatePage = true,
 	redirectTo = "/login",
 }) => {
 	const { userLogged } = useUserAuth();
 
-	if (validadePage) {
+	if (validatePage) {
 		if (!userLogged) {
 			return <Navigate to={redirectTo} />;
 		}

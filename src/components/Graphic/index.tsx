@@ -10,16 +10,16 @@ import TriangleRightIcon from "../../assets/icons/triangle-right.svg";
 import { Container, ContainerChart, Header, Icon, Title } from "./styles";
 
 const Graphic: React.FC = () => (
-	<Container>
+	<Container className="bg-content3">
 		<Header>
 			<Icon src={TriangleLeftIcon} alt="Retroceder" />
-			<Title>Entrada de clientes - Julho</Title>
+			<Title className="text-content2">Entrada de clientes - Julho</Title>
 			<Icon src={TriangleRightIcon} alt="Avançar" style={{ opacity: 0.7 }} />
 		</Header>
 		<ContainerChart>
 			<ChartClients
 				viewDate="Month"
-				series={[{ name: "Total de usuários", data: clientsData }]}
+				series={[{ name: "Total de clientes", data: clientsData }]}
 			/>
 		</ContainerChart>
 	</Container>

@@ -15,7 +15,7 @@ const Layout: React.FC = () => {
 			/>
 			<ContainerMain>
 				<MenuLateral expanded={handlerSideBar} />
-				<Main>
+				<Main className="bg-content1">
 					<Outlet />
 				</Main>
 			</ContainerMain>

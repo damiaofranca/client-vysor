@@ -3,12 +3,25 @@ const optionsChart = {
 		text: "",
 	},
 	xAxis: {
+		lineColor: "#d9ddf1",
+
 		crosshair: {
 			width: 1,
 		},
 		type: "datetime",
 		labels: {
 			format: "{text}",
+			style: {
+				color: "#d9ddf1",
+			},
+		},
+	},
+	yAxis: {
+		gridLineColor: "#d9ddf1",
+		labels: {
+			style: {
+				color: "#d9ddf1",
+			},
 		},
 	},
 	legend: {
@@ -17,17 +30,13 @@ const optionsChart = {
 		verticalAlign: "bottom",
 	},
 	responsive: {},
-	chart: {
-		borderWidth: 1,
-		borderColor: "transparent",
-	},
 	accessibility: {
 		enabled: false,
 	},
 
 	plotOptions: {
 		series: {
-			color: "#4E61C9",
+			color: "#e23",
 			label: {
 				connectorAllowed: false,
 			},

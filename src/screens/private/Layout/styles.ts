@@ -16,6 +16,5 @@ export const Main = styled.div`
 	padding: 40px;
 	overflow-y: auto;
 	position: relative;
-	background-color: #f9f9f9;
-	min-height: calc(100vh - 100px);
+	min-height: calc(100vh - 72px);
 `;

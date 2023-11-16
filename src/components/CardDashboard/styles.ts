@@ -6,7 +6,6 @@ export const Container = styled.div`
 	margin-right: 24px;
 	border-radius: 12px;
 	margin-bottom: 24px;
-	background-color: #fff;
 	max-width: calc(25% - 24px);
 
 	&:nth-child(4) {
@@ -69,7 +68,6 @@ export const ContainerInfoColumn = styled.div`
 `;
 
 export const Title = styled.h1`
-	color: #4f4f4f;
 	font-size: 18px;
 	font-weight: 600;
 	line-height: 27px;

@@ -5,30 +5,38 @@ import Layout from "./private/Layout";
 import LoginPage from "./public/LoginPage";
 import { ProtectedPage } from "../components";
 import { UserAuth } from "../providers/UserAuth";
-import { ROUTES_PAGES } from "./private/routes-protected";
 import RegisterPage from "./public/RegisterPage";
+import ForgotPassword from "./public/ForgotPassword";
+import { ROUTES_PAGES } from "./private/routes-protected";
+import { ThemeProvider } from "../providers/Theme";
 
 const HandlerPages: React.FC = () => {
 	const router = createBrowserRouter([
 		{
 			path: "/",
 			children: ROUTES_PAGES,
-			element: <ProtectedPage element={Layout} validadePage={true} />,
+			element: <ProtectedPage element={Layout} validatePage={true} />,
 		},
 		{
 			path: "/login",
-			element: <ProtectedPage element={LoginPage} validadePage={false} />,
+			element: <ProtectedPage element={LoginPage} validatePage={false} />,
 		},
 		{
 			path: "/register",
-			element: <ProtectedPage element={RegisterPage} validadePage={false} />,
+			element: <ProtectedPage element={RegisterPage} validatePage={false} />,
+		},
+		{
+			path: "/forgot-password",
+			element: <ProtectedPage element={ForgotPassword} validatePage={false} />,
 		},
 	]);
 
 	return (
-		<UserAuth>
-			<RouterProvider router={router} />
-		</UserAuth>
+		<ThemeProvider>
+			<UserAuth>
+				<RouterProvider router={router} />
+			</UserAuth>
+		</ThemeProvider>
 	);
 };
 

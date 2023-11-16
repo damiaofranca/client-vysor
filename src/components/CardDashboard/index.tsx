@@ -15,6 +15,7 @@ import {
 import MetricUpIcon from "../../assets/icons/metric-up.svg";
 import MetricDownIcon from "../../assets/icons/metric-down.svg";
 import MetricStableIcon from "../../assets/icons/metric-stable.svg";
+import { StyleSheetManager } from "styled-components";
 //icons
 
 interface ICardDashboard {
@@ -28,24 +29,26 @@ interface ICardDashboard {
 
 const CardDashboard: React.FC<ICardDashboard> = (props) => {
 	return (
-		<Container>
+		<Container className="bg-content3">
 			<ContainerInfoFlex>
 				<ContainerInfoColumn>
 					<Icon src={props.icon} alt={props.title} />
-					<Title>{props.title}</Title>
-					<SubTitle metric={props.metric}>
-						{props.subtitle} de &nbsp;<label>{props.valueMetric}%</label>
-						<ImageMetric
-							src={
-								props.metric === "growth"
-									? MetricUpIcon
-									: props.metric === "middle"
-									? MetricStableIcon
-									: MetricDownIcon
-							}
-							alt={props.metric}
-						/>
-					</SubTitle>
+					<Title className="text-content2">{props.title}</Title>
+					<StyleSheetManager shouldForwardProp={(prop) => prop !== "metric"}>
+						<SubTitle metric={props.metric} className="text-content2">
+							{props.subtitle} de &nbsp;<label>{props.valueMetric}%</label>
+							<ImageMetric
+								src={
+									props.metric === "growth"
+										? MetricUpIcon
+										: props.metric === "middle"
+										? MetricStableIcon
+										: MetricDownIcon
+								}
+								alt={props.metric}
+							/>
+						</SubTitle>
+					</StyleSheetManager>
 				</ContainerInfoColumn>
 				<ContainerInfoFlex style={{ alignItems: "center" }}>
 					<Value>{props.value}</Value>

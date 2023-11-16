@@ -8,7 +8,6 @@ export const Container = styled.div`
 	border-radius: 12px;
 	align-items: center;
 	flex-direction: column;
-	background-color: #fff;
 	padding: 40px 40px 12px 40px;
 
 	@media screen and (max-width: 1840px) {
@@ -25,7 +24,6 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
 	width: 100%;
-	color: #4f4f4f;
 	font-size: 24px;
 	font-weight: 600;
 	line-height: 36px;
@@ -47,11 +45,10 @@ export const ListItem = styled.div`
 	padding: 21px 16px;
 	align-items: center;
 	justify-content: space-between;
-	border-bottom: 1px solid #f9f9f9;
+	border-bottom: 1px solid #efefef;
 `;
 
 export const TitleList = styled.h5`
-	color: #4f4f4f;
 	font-size: 16px;
 	font-weight: 600;
 	line-height: 24px;
@@ -60,7 +57,6 @@ export const TitleList = styled.h5`
 
 export const LabelList = styled.label`
 	margin: 0;
-	color: #4f4f4f;
 	font-size: 14px;
 	font-weight: 500;
 	line-height: 21px;

@@ -16,19 +16,21 @@ export const RankingCities: React.FC<RankingCitiesProps> = () => {
 	const { topEightCities } = useGetStores();
 
 	return (
-		<Container>
-			<Title>Ranking de cidades</Title>
+		<Container className="bg-content3">
+			<Title className="text-content2">Ranking de cidades</Title>
 
 			{topEightCities && topEightCities.length ? (
 				<ContainerList>
 					<ListItem>
-						<TitleList>Cidade</TitleList>
-						<TitleList>Montante</TitleList>
+						<TitleList className="text-content2">Cidade</TitleList>
+						<TitleList className="text-content2">Montante</TitleList>
 					</ListItem>
 					{topEightCities.map((city) => (
 						<ListItem key={city.name}>
-							<LabelList>{city.name}</LabelList>
-							<LabelList>R${city.totalMount}</LabelList>
+							<LabelList className="text-content2">{city.name}</LabelList>
+							<LabelList className="text-content2">
+								R${city.totalMount}
+							</LabelList>
 						</ListItem>
 					))}
 				</ContainerList>

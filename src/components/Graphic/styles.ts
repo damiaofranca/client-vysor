@@ -5,7 +5,6 @@ export const Container = styled.div`
 	padding: 40px;
 	min-height: 672px;
 	border-radius: 12px;
-	background-color: #fff;
 	flex-direction: column;
 	width: calc(75% - 24px);
 
@@ -25,7 +24,6 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.h5`
-	color: #4f4f4f;
 	font-size: 24px;
 	font-weight: 600;
 	line-height: 36px;

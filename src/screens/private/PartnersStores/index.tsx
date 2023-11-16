@@ -3,35 +3,35 @@ import React from "react";
 import plusIcon from "../../../assets/icons/plus.svg";
 import { CreateStore, MapPartners } from "../../../components";
 
-import {
-	Title,
-	Container,
-	RegisterIcon,
-	RegisterStore,
-	ContainerHeader,
-} from "./styles";
+import { Title, Container, RegisterIcon, ContainerHeader } from "./styles";
+import { Button } from "@nextui-org/react";
 
 interface PartnersStoresProps {}
 
 export const PartnersStores: React.FC<PartnersStoresProps> = () => {
-	const [showModalCreatStore, setShowModalCreatStore] =
+	const [showModalCreateStore, setShowModalCreateStore] =
 		React.useState<boolean>(false);
+
+	const onAddStore = () => setShowModalCreateStore(true);
+
+	const onCloseStore = () => setShowModalCreateStore(false);
 
 	return (
 		<>
-			<Container>
+			<Container className="bg-content3">
 				<ContainerHeader>
-					<Title>Mapa de lojas</Title>
-					<RegisterStore onClick={() => setShowModalCreatStore(true)}>
-						<RegisterIcon src={plusIcon} alt="Cadastrar loja" />
+					<Title className="text-content2">Mapa de lojas</Title>
+					<Button
+						color="primary"
+						endContent={<RegisterIcon src={plusIcon} alt="Cadastrar loja" />}
+						onClick={onAddStore}
+					>
 						Cadastrar loja
-					</RegisterStore>
+					</Button>
 				</ContainerHeader>
 				<MapPartners />
 			</Container>
-			{showModalCreatStore && (
-				<CreateStore onClose={() => setShowModalCreatStore(false)} />
-			)}
+			{showModalCreateStore && <CreateStore onClose={onCloseStore} />}
 		</>
 	);
 };

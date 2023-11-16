@@ -7,10 +7,10 @@ import { PartnersStores } from "./PartnersStores";
 export const ROUTES_PAGES: RouteObject[] = [
 	{
 		path: "/",
-		element: <ProtectedPage element={InitialPage} validadePage={true} />,
+		element: <ProtectedPage element={InitialPage} validatePage={true} />,
 	},
 	{
 		path: "/partners",
-		element: <ProtectedPage element={PartnersStores} validadePage={true} />,
+		element: <ProtectedPage element={PartnersStores} validatePage={true} />,
 	},
 ];

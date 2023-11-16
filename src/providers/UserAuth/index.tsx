@@ -1,21 +1,20 @@
-import React, { ReactNode } from "react";
+import { toast } from "react-toastify";
+import React, { ReactNode, useState } from "react";
 import {
-	UserInfo,
-	createUserWithEmailAndPassword,
-	signInWithPopup,
+	User,
 	signOut,
-} from "firebase/auth";
-
-import {
 	setPersistence,
+	signInWithPopup,
+	onAuthStateChanged,
 	inMemoryPersistence,
+	sendPasswordResetEmail,
 	signInWithEmailAndPassword,
+	createUserWithEmailAndPassword,
 } from "firebase/auth";
 
-import { IUserAuthContext, IUserAuthSignIn } from "./types";
-import { useAuthentication } from "../../hooks/useAuthentication";
-import { handleFirebaseRequestError } from "../../utils/requestError";
 import { auth, provider } from "../../config/firebase";
+import { IUserAuthContext, IUserAuthSignIn } from "./types";
+import { handleFirebaseRequestError } from "../../utils/requestError";
 
 interface UserAuthProps {
 	children: ReactNode;
@@ -26,10 +25,9 @@ export const UserAuthContext = React.createContext<IUserAuthContext>(
 );
 
 export const UserAuth: React.FC<UserAuthProps> = ({ children }) => {
-	const { user } = useAuthentication();
-	const preUser = localStorage.getItem("user");
-	const [userLogged, setUserLogged] = React.useState<UserInfo | undefined>(
-		preUser && JSON.parse(preUser),
+	const [loading, setLoading] = useState<boolean>(true);
+	const [userLogged, setUserLogged] = React.useState<User | undefined>(
+		undefined,
 	);
 
 	const onLogin = async ({ email, password }: IUserAuthSignIn) => {
@@ -41,7 +39,6 @@ export const UserAuth: React.FC<UserAuthProps> = ({ children }) => {
 				password,
 			);
 
-			setUserLogged(userSignIn.providerData[0]);
 			localStorage.setItem("user", JSON.stringify(userSignIn.providerData[0]));
 		} catch (err) {
 			handleFirebaseRequestError(err as any);
@@ -50,48 +47,47 @@ export const UserAuth: React.FC<UserAuthProps> = ({ children }) => {
 
 	const onSignOut = async () => {
 		await signOut(auth);
-		setUserLogged(undefined);
-		localStorage.removeItem("user");
 	};
 
 	const onSignInWithGoogle = async () => {
-		try {
-			const user = await signInWithPopup(auth, provider);
-			setUserLogged(user.user.providerData[0]);
-			localStorage.setItem("user", JSON.stringify(user.user.providerData[0]));
-			window.location.href = "/";
-		} catch (error: any) {
-			// const errorCode = error.code;
-			// const errorMessage = error.message;
-			// const email = error.customData.email;
-			// const credential = GoogleAuthProvider.credentialFromError(error);
-		}
+		const user = await signInWithPopup(auth, provider);
+		localStorage.setItem("user", JSON.stringify(user.user.providerData[0]));
+		window.location.href = "/";
 	};
 
 	const onSignUp = async (values: { email: string; password: string }) => {
+		const user = await createUserWithEmailAndPassword(
+			auth,
+			values.email,
+			values.password,
+		);
+		localStorage.setItem("user", JSON.stringify(user.user.providerData[0]));
+		window.location.href = "/";
+	};
+
+	const sendEmailUpdatePassword = async (email: string) => {
 		try {
-			const user = await createUserWithEmailAndPassword(
-				auth,
-				values.email,
-				values.password,
-			);
-			setUserLogged(user.user.providerData[0]);
-			localStorage.setItem("user", JSON.stringify(user.user.providerData[0]));
-			window.location.href = "/";
-		} catch (error: any) {
-			// const errorCode = error.code;
-			// const errorMessage = error.message;
-			// const email = error.customData.email;
-			// const credential = GoogleAuthProvider.credentialFromError(error);
+			await sendPasswordResetEmail(auth, email);
+			toast.success("Email enviado com sucesso.");
+		} catch (error) {
+			console.log(error);
 		}
 	};
 
 	React.useEffect(() => {
-		if (user) {
-			setUserLogged(user);
-			localStorage.setItem("user", JSON.stringify(user));
-		}
-	}, [user]);
+		const unsubscribe = onAuthStateChanged(auth, (user) => {
+			setLoading(false);
+			if (user) {
+				setUserLogged(user);
+			} else {
+				setUserLogged(undefined);
+			}
+		});
+
+		return () => {
+			if (unsubscribe) unsubscribe();
+		};
+	}, []);
 	return (
 		<UserAuthContext.Provider
 			value={{
@@ -101,9 +97,10 @@ export const UserAuth: React.FC<UserAuthProps> = ({ children }) => {
 				onSignUp,
 				onSignOut,
 				onSignInWithGoogle,
+				sendEmailUpdatePassword,
 			}}
 		>
-			{children}
+			{!loading && children}
 		</UserAuthContext.Provider>
 	);
 };

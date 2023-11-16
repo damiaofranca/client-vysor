@@ -1,26 +1,32 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { StyleSheetManager } from "styled-components";
 import { useUserAuth } from "../../hooks/useUserAuth";
 import { getFirstNameFromEmail } from "../../utils/getFirstName";
 
 //icons
 import LogoIcon from "../../assets/icons/logo.svg";
-import SignOutIcon from "../../assets/icons/sign-out.svg";
 import MinifyIcon from "../../assets/icons/minify-bar.svg";
+import LogoWhiteIcon from "../../assets/icons/logo-white.svg";
 import ExpandedIcon from "../../assets/icons/expanded-bar.svg";
+
+import {
+	Avatar,
+	Button,
+	Dropdown,
+	DropdownItem,
+	DropdownMenu,
+	DropdownTrigger,
+} from "@nextui-org/react";
+
+import { useTheme } from "../../hooks";
 
 import {
 	Logo,
 	NameUser,
 	LeftSide,
 	Container,
-	TextDropDown,
-	ActionDropDown,
-	InitialLetters,
 	SwitchViewSideBar,
-	ContainerDropDown,
-	ContainerUserInfo,
-	IconDropDownAction,
 } from "./styles";
 
 interface HeaderProps {
@@ -29,34 +35,52 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ sideExpanded, onExpanded }) => {
+	const { theme, onChangeTheme } = useTheme();
 	const navigate = useNavigate();
 	const { onSignOut, userLogged } = useUserAuth();
-	const [handlerMenuInfo, setHandlerMenuInfo] = React.useState<boolean>(false);
 
 	const signOut = async () => {
 		await onSignOut();
 		navigate("/login");
 	};
 	return (
-		<Container>
-			<Logo src={LogoIcon} alt="Client Vysor" />
-			<SwitchViewSideBar
-				imgURL={sideExpanded ? ExpandedIcon : MinifyIcon}
-				onClick={onExpanded}
+		<Container className="bg-content4">
+			<Logo
+				src={theme === "light" ? LogoIcon : LogoWhiteIcon}
+				alt="Client Vysor"
 			/>
+			<StyleSheetManager shouldForwardProp={(prop) => prop !== "imgurl"}>
+				<SwitchViewSideBar
+					onClick={onExpanded}
+					imgurl={sideExpanded ? ExpandedIcon : MinifyIcon}
+					className={theme === "light" ? "filter invert" : ""}
+				/>
+			</StyleSheetManager>
+
 			<LeftSide>
-				<ContainerUserInfo onClick={() => setHandlerMenuInfo(!handlerMenuInfo)}>
-					<NameUser>{getFirstNameFromEmail(userLogged?.email || "")}</NameUser>
-					<InitialLetters>{(userLogged?.email || "")[0]}</InitialLetters>
-					{handlerMenuInfo && (
-						<ContainerDropDown onClick={(evt: any) => evt.stopPropagation()}>
-							<ActionDropDown onClick={signOut}>
-								<IconDropDownAction src={SignOutIcon} alt="Sair" />
-								<TextDropDown> Sair </TextDropDown>
-							</ActionDropDown>
-						</ContainerDropDown>
-					)}
-				</ContainerUserInfo>
+				<Dropdown backdrop="blur">
+					<DropdownTrigger>
+						<Button variant="light">
+							<NameUser>
+								{getFirstNameFromEmail(userLogged?.email || "")}
+							</NameUser>
+							<Avatar
+								{...(userLogged?.providerData[0].photoURL
+									? { src: userLogged?.providerData[0].photoURL }
+									: { name: userLogged?.providerData[0].email || "" })}
+							/>
+						</Button>
+					</DropdownTrigger>
+					<DropdownMenu aria-label="Ações">
+						<DropdownItem key="profile">Perfil</DropdownItem>
+						<DropdownItem key="theme" onClick={onChangeTheme}>
+							Mudar de tema: {theme === "light" ? "claro" : "escuro"}
+						</DropdownItem>
+						<DropdownItem key="signOut" onClick={signOut}>
+							Sair
+						</DropdownItem>
+					</DropdownMenu>
+				</Dropdown>
 			</LeftSide>
 		</Container>
 	);

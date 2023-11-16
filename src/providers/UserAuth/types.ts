@@ -1,4 +1,4 @@
-import { UserInfo } from "firebase/auth";
+import { User } from "firebase/auth";
 
 export interface IUserAuthSignIn {
 	email: string;
@@ -6,10 +6,11 @@ export interface IUserAuthSignIn {
 }
 
 export interface IUserAuthContext {
-	userLogged: UserInfo | undefined;
+	userLogged: User | undefined;
 	onSignOut: () => Promise<void>;
 
 	onSignInWithGoogle: () => Promise<void>;
+	sendEmailUpdatePassword: (email: string) => Promise<void>;
 	onLogin: ({ email, password }: IUserAuthSignIn) => Promise<void>;
 	onSignUp: (values: { email: string; password: string }) => Promise<void>;
 }
