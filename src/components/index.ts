@@ -13,3 +13,5 @@ export * from "./InputNew";
 export * from "./EyeFilledIcon";
 export * from "./EyeSlashFilledIcon";
 export * from "./GoogleIcon";
+export * from "./ArrowLeft";
+export * from "./TrashIcon";

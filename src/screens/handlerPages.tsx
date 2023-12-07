@@ -32,11 +32,9 @@ const HandlerPages: React.FC = () => {
 	]);
 
 	return (
-		<ThemeProvider>
-			<UserAuth>
-				<RouterProvider router={router} />
-			</UserAuth>
-		</ThemeProvider>
+		<UserAuth>
+			<RouterProvider router={router} />
+		</UserAuth>
 	);
 };
 

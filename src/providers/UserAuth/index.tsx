@@ -3,6 +3,7 @@ import React, { ReactNode, useState } from "react";
 import {
 	User,
 	signOut,
+	deleteUser,
 	setPersistence,
 	signInWithPopup,
 	onAuthStateChanged,
@@ -15,6 +16,7 @@ import {
 import { auth, provider } from "../../config/firebase";
 import { IUserAuthContext, IUserAuthSignIn } from "./types";
 import { handleFirebaseRequestError } from "../../utils/requestError";
+import { ThemeProvider } from "../Theme";
 
 interface UserAuthProps {
 	children: ReactNode;
@@ -65,6 +67,17 @@ export const UserAuth: React.FC<UserAuthProps> = ({ children }) => {
 		window.location.href = "/";
 	};
 
+	const deleteAccount = async () => {
+		if (userLogged) {
+			try {
+				await deleteUser(userLogged);
+				toast.success("Conta deletada com sucesso.");
+			} catch (error) {
+				console.log(error);
+			}
+		}
+	};
+
 	const sendEmailUpdatePassword = async (email: string) => {
 		try {
 			await sendPasswordResetEmail(auth, email);
@@ -89,18 +102,21 @@ export const UserAuth: React.FC<UserAuthProps> = ({ children }) => {
 		};
 	}, []);
 	return (
-		<UserAuthContext.Provider
-			value={{
-				userLogged,
+		<ThemeProvider>
+			<UserAuthContext.Provider
+				value={{
+					userLogged,
 
-				onLogin,
-				onSignUp,
-				onSignOut,
-				onSignInWithGoogle,
-				sendEmailUpdatePassword,
-			}}
-		>
-			{!loading && children}
-		</UserAuthContext.Provider>
+					onLogin,
+					onSignUp,
+					onSignOut,
+					deleteAccount,
+					onSignInWithGoogle,
+					sendEmailUpdatePassword,
+				}}
+			>
+				{!loading && children}
+			</UserAuthContext.Provider>
+		</ThemeProvider>
 	);
 };

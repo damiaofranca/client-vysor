@@ -3,6 +3,8 @@ import { ProtectedPage } from "../../components";
 
 import { InitialPage } from "./InitialPage";
 import { PartnersStores } from "./PartnersStores";
+import { Account } from "./Account";
+import { DeleteAccount } from "./DeleteAccount";
 
 export const ROUTES_PAGES: RouteObject[] = [
 	{
@@ -12,5 +14,15 @@ export const ROUTES_PAGES: RouteObject[] = [
 	{
 		path: "/partners",
 		element: <ProtectedPage element={PartnersStores} validatePage={true} />,
+	},
+	{
+		path: "/account",
+		element: <ProtectedPage element={Account} validatePage={true} />,
+		children: [
+			{
+				path: "delete-account",
+				element: <DeleteAccount />,
+			},
+		],
 	},
 ];

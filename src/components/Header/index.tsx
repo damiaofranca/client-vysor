@@ -43,6 +43,11 @@ export const Header: React.FC<HeaderProps> = ({ sideExpanded, onExpanded }) => {
 		await onSignOut();
 		navigate("/login");
 	};
+
+	const onNavigateToAccount = async () => {
+		navigate("/account");
+	};
+
 	return (
 		<Container className="bg-content4">
 			<Logo
@@ -72,7 +77,9 @@ export const Header: React.FC<HeaderProps> = ({ sideExpanded, onExpanded }) => {
 						</Button>
 					</DropdownTrigger>
 					<DropdownMenu aria-label="Ações">
-						<DropdownItem key="profile">Perfil</DropdownItem>
+						<DropdownItem key="profile" onClick={onNavigateToAccount}>
+							Perfil
+						</DropdownItem>
 						<DropdownItem key="theme" onClick={onChangeTheme}>
 							Mudar de tema: {theme === "light" ? "claro" : "escuro"}
 						</DropdownItem>
