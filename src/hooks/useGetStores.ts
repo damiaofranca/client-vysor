@@ -20,9 +20,7 @@ export const useGetStores = (): IUseGetStores => {
 
 	const topEightCities = React.useMemo(() => {
 		return stores
-			? stores
-					.sort((a, b) => parseFloat(b.totalMount) - parseFloat(a.totalMount))
-					.slice(0, 8)
+			? stores.sort((a, b) => Number(a.totalMount) - Number(b.totalMount))
 			: null;
 	}, [stores]);
 
@@ -32,9 +30,9 @@ export const useGetStores = (): IUseGetStores => {
 			(collection) => {
 				!collection.empty &&
 					setStores(() =>
-						collection.docs.map((store) => store.data() as Store)
+						collection.docs.map((store) => store.data() as Store),
 					);
-			}
+			},
 		);
 
 		return () => unsub();

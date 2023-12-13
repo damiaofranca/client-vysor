@@ -17,11 +17,23 @@ interface InitialPageProps {}
 export const InitialPage: React.FC<InitialPageProps> = () => {
 	const { stores } = useGetStores();
 
+	const getTotalCities = () => {
+		return stores.filter((value, index, self) => {
+			return (
+				self.findIndex(
+					(v) =>
+						v.city.toLowerCase().normalize() ===
+						value.city.toLowerCase().normalize(),
+				) === index
+			);
+		}).length;
+	};
+
 	return (
 		<Container>
 			<WrapperCards>
 				<CardDashboard
-					value="+12mil"
+					value="+45mil"
 					metric="growth"
 					valueMetric={10}
 					icon={PeopleIcon}
@@ -34,10 +46,10 @@ export const InitialPage: React.FC<InitialPageProps> = () => {
 					subtitle="Constância"
 					icon={MapDashboardIcon}
 					title="Total de cidades"
-					value={`${stores.length || "0"}`}
+					value={`${getTotalCities() || "0"}`}
 				/>
 				<CardDashboard
-					value="+13mil"
+					value="+45mil"
 					metric="growth"
 					icon={ChipIcon}
 					valueMetric={10}
@@ -45,12 +57,12 @@ export const InitialPage: React.FC<InitialPageProps> = () => {
 					title="Total de assinaturas"
 				/>
 				<CardDashboard
-					value="134"
 					metric="down"
-					valueMetric={10}
+					valueMetric={28}
 					icon={BuildIcon}
 					subtitle="Declinação"
-					title="Total de lojas parceiras"
+					title="Total de lojas"
+					value={`${stores.length || "0"}`}
 				/>
 			</WrapperCards>
 			<WrapperGraphics>

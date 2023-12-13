@@ -115,7 +115,7 @@ export const CreateStore: React.FC<ICreateStore> = ({ onClose }) => {
 	return (
 		<Modal isOpen={true} placement={"center"} onOpenChange={onClose}>
 			<ModalContent className={theme === "dark" ? "bg-[#313131]" : ""}>
-				{(onClose) => (
+				{() => (
 					<>
 						<ModalHeader
 							className={`flex flex-col gap-1 ${
@@ -149,7 +149,7 @@ export const CreateStore: React.FC<ICreateStore> = ({ onClose }) => {
 										onBlur={handleBlur}
 										value={values.city}
 										onChange={handleChange}
-										placeholder="Digite a cidade do e-mail"
+										placeholder="Digite o nome da cidade"
 										isInvalid={errors.city && touched.city ? true : false}
 										errorMessage={
 											errors.city && touched.city ? errors.city : ""
@@ -201,22 +201,22 @@ export const CreateStore: React.FC<ICreateStore> = ({ onClose }) => {
 										}
 									/>
 								</FormItem>
+								<ModalFooter style={{ paddingRight: 0 }}>
+									<Button color="danger" variant="solid" onPress={clearData}>
+										Limpar campos
+									</Button>
+									<Button
+										type="submit"
+										color="primary"
+										isDisabled={!isValid}
+										isLoading={isLoading}
+										spinner={<Spinner size="sm" />}
+									>
+										Cadastrar
+									</Button>
+								</ModalFooter>
 							</Form>
 						</ModalBody>
-						<ModalFooter>
-							<Button color="danger" variant="solid" onPress={clearData}>
-								Limpar campos
-							</Button>
-							<Button
-								type="submit"
-								color="primary"
-								isDisabled={!isValid}
-								isLoading={isLoading}
-								spinner={<Spinner size="sm" />}
-							>
-								Cadastrar
-							</Button>
-						</ModalFooter>
 					</>
 				)}
 			</ModalContent>
